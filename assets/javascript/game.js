@@ -21,24 +21,26 @@ document.onkeyup = function (event) {
     // Win condition
     if (userLetter === compLetter) {
         wins++;
-        guessedLetters = [];
         guesses = 10;
         compLetter = letters[Math.floor(Math.random() * letters.length)];
+        document.getElementById("letters guessed").innerHTML = guessedLetters;
         alert("You Win! Hit any key to play again.")
+        guessedLetters = [];
         console.log(compLetter)
     }
     // Wrong guesses
     else {
         guesses--;
         guessedLetters.push(userLetter);
-        document.getElementById("letters guessed").innerHTML = guessedLetters;
+        
         console.log(guesses)
     }
     // Fail
     if (guesses === 0) {
         losses++;
+        document.getElementById("letters guessed").innerHTML = guessedLetters;
+        alert("You Lose! Good Day Sir!")
         guessedLetters = [];
-        alert("No dice. Up for another game? Hit any key to play again.")
         guesses = 10;
         console.log(losses)
     }
@@ -47,6 +49,6 @@ document.onkeyup = function (event) {
     document.getElementById("wins").innerHTML = wins;
     document.getElementById("losses").innerHTML = losses;
     document.getElementById("guesses remaining").innerHTML = guesses;
-    
+    document.getElementById("letters guessed").innerHTML = guessedLetters;
 
 }
