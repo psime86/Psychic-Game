@@ -21,22 +21,24 @@ document.onkeyup = function (event) {
     // Win condition
     if (userLetter === compLetter) {
         wins++;
-        guesses = 10;
         guessedLetters = [];
-        console.log(wins)
+        guesses = 10;
+        compLetter = letters[Math.floor(Math.random() * letters.length)];
+        alert("You Win! Hit any key to play again.")
+        console.log(compLetter)
     }
     // Wrong guesses
     else {
         guesses--;
         guessedLetters.push(userLetter);
         document.getElementById("letters guessed").innerHTML = guessedLetters;
-        console.log(guessedLetters)
         console.log(guesses)
     }
     // Fail
     if (guesses === 0) {
         losses++;
         guessedLetters = [];
+        alert("No dice. Up for another game? Hit any key to play again.")
         guesses = 10;
         console.log(losses)
     }
